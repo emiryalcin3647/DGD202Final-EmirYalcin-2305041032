@@ -1,12 +1,13 @@
-using System;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Pellet : MonoBehaviour
 {
-    public void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
-        PelletCollector.Instance.PelletCollected();
-        Destroy(gameObject);
+        if (other.CompareTag("Player"))
+        {
+            PelletCollector.Instance.PelletCollected(); 
+            Destroy(gameObject); 
+        }
     }
 }
